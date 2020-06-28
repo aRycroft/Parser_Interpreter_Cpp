@@ -83,7 +83,7 @@ private:
 	unsigned currentWord;
 	std::vector<std::string> tokens;
 	std::unordered_map<std::string, std::string> vars;
-	CommandFactory factory;
+	std::unique_ptr<CommandFactory> factory;
 };
 
 

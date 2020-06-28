@@ -53,7 +53,7 @@ void Program::instr() {
 
 void Program::instruct() {
 	std::function<void(Program*)> function;
-	function = factory.getCommand(check(0));
+	function = factory->getCommand(check(0));
 	if (function != nullptr) {
 		function(this);
 	}
