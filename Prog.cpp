@@ -15,6 +15,16 @@ std::string Program::check(int n) {
 	return tokens[currentWord + n];
 }
 
+void Program::newProgram(std::string fileName)
+{
+	std::unique_ptr<Program> newProgram(new Program(fileName));
+}
+
+void Program::setVar(std::string name, std::string value)
+{
+	vars.insert(std::make_pair(name, value));
+}
+
 void Program::tokenise(std::string fileName) {
 	std::string line;
 	std::fstream file(fileName);
@@ -53,7 +63,7 @@ void Program::instr() {
 
 void Program::instruct() {
 	std::function<void(Program*)> function;
-	function = factory->getCommand(check(0));
+	function = factory.getCommand(check(0));
 	if (function != nullptr) {
 		function(this);
 	}
